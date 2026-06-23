@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Thais Cristina Araújo Sousa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #050505;
+            --bg-panel: #0A0A0A;
+            --accent: #F7C948;
+            --accent-dim: rgba(247, 201, 72, 0.12);
+            --accent-glow: rgba(247, 201, 72, 0.25);
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1AA;
+            --text-dim: #52525B;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(247, 201, 72, 0.3);
+            --glass: rgba(20, 20, 20, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #030303;
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(247,201,72,0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -300px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(247,201,72,0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .resume {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.03),
+                0 25px 80px -12px rgba(0,0,0,0.8),
+                0 0 120px -20px rgba(247,201,72,0.06);
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            background: var(--bg-panel);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, rgba(247,201,72,0.06) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .sidebar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(247,201,72,0.15), transparent);
+        }
+
+        /* Avatar area */
+        .avatar-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, #E5A800 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #050505;
+            position: relative;
+            box-shadow: 0 0 40px -5px var(--accent-glow);
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px solid var(--border-accent);
+            animation: pulse-ring 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.04); }
+        }
+
+        .name {
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        .role-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: var(--accent-dim);
+            border: 1px solid var(--border-accent);
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Sidebar sections */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar-label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-accent), transparent);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 10px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .contact-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            padding-top: 6px;
+        }
+
+        .contact-text span {
+            display: block;
+            font-size: 9px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+
+        /* Skills bars */
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .skill-level {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--accent), #FFD966);
+            position: relative;
+            transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .skill-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* Traits / Soft skills */
+        .trait-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .trait-tag {
+            padding: 4px 10px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            font-size: 10px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .trait-tag:hover {
+            border-color: var(--border-accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--accent-dim);
+            border: 1px solid var(--border-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-color), transparent);
+        }
+
+        /* Objective */
+        .objective-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding: 16px 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent);
+            font-weight: 300;
+        }
+
+        /* Experience cards */
+        .exp-card {
+            position: relative;
+            padding: 20px 24px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .exp-card:hover {
+            border-color: var(--border-accent);
+            background: rgba(247, 201, 72, 0.03);
+        }
+
+        .exp-card:hover::before {
+            opacity: 1;
+        }
+
+        .exp-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .exp-role {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .exp-company {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .exp-company .iconify {
+            font-size: 12px;
+        }
+
+        .exp-tasks {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .exp-tasks li {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding-left: 18px;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .exp-tasks li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        /* Timeline connector */
+        .timeline-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding: 4px 0;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--border-accent);
+            background: var(--bg-dark);
+            z-index: 1;
+        }
+
+        .timeline-line {
+            width: 1px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--border-accent), transparent);
+        }
+
+        /* Print button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: #050505;
+            border: none;
+            border-radius: 100px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 30px -5px var(--accent-glow);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px -5px var(--accent-glow);
+        }
+
+        .print-btn .iconify {
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 16px 8px;
+            }
+
+            .resume {
+                grid-template-columns: 1fr;
+                border-radius: 16px;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 32px 24px;
+            }
+
+            .sidebar::after {
+                display: none;
+            }
+
+            .main {
+                padding: 28px 20px;
+            }
+
+            .print-btn {
+                bottom: 16px;
+                right: 16px;
+                padding: 10px 18px;
+                font-size: 10px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            body::before, body::after {
+                display: none;
+            }
+
+            .resume {
+                box-shadow: none;
+                border: 1px solid #e0e0e0;
+                border-radius: 0;
+                max-width: 100%;
+            }
+
+            .sidebar {
+                background: #f8f8f8;
+                border-right-color: #e0e0e0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .sidebar::before {
+                background: linear-gradient(180deg, rgba(247,201,72,0.08) 0%, transparent 100%);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .avatar {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .main {
+                background: white;
+            }
+
+            .exp-card {
+                background: #fafafa;
+                border-color: #e8e8e8;
+            }
+
+            .objective-text {
+                background: #fafafa;
+                border-left-color: var(--accent);
+                border-color: #e8e8e8;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section-icon,
+            .contact-icon,
+            .skill-fill,
+            .skill-fill::after,
+            .trait-tag,
+            .role-tag,
+            .exp-company,
+            .exp-tasks li::before,
+            .sidebar-label,
+            .avatar::after {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .print-btn {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        .delay-7 { animation-delay: 0.7s; }
+        .delay-8 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+
+<div class="resume">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <!-- Avatar & Name -->
+        <div class="avatar-area animate-in delay-1">
+            <div class="avatar">TC</div>
+            <div class="name">Thais Cristina<br>Araújo Sousa</div>
+            <div class="role-tag">
+                <span class="iconify" data-icon="lucide:sparkles"></span>
+                Vendedora · Estoquista
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="sidebar-section animate-in delay-2">
+            <div class="sidebar-label">Contato</div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <span class="iconify" data-icon="lucide:phone"></span>
+                </div>
+                <div class="contact-text">
+                    <span>Telefone</span>
+                    (85) 99771-6517
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <span class="iconify" data-icon="lucide:mail"></span>
+                </div>
+                <div class="contact-text">
+                    <span>E-mail</span>
+                    tataf5.3636r@gmail.com
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <span class="iconify" data-icon="lucide:map-pin"></span>
+                </div>
+                <div class="contact-text">
+                    <span>Endereço</span>
+                    São Gerardo, Fortaleza – CE
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="sidebar-section animate-in delay-3">
+            <div class="sidebar-label">Competências</div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">Atendimento ao Cliente</span>
+                    <span class="skill-level">Avançado</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 90%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">Vendas e Persuasão</span>
+                    <span class="skill-level">Avançado</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">Organização de Estoque</span>
+                    <span class="skill-level">Avançado</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 88%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">Comunicação Verbal</span>
+                    <span class="skill-level">Intermediário</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">Gestão de Fluxo de Caixa</span>
+                    <span class="skill-level">Intermediário</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" style="width: 70%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soft Skills Tags -->
+        <div class="sidebar-section animate-in delay-4">
+            <div class="sidebar-label">Perfil</div>
+            <div class="trait-list">
+                <span class="trait-tag">Proativa</span>
+                <span class="trait-tag">Organizada</span>
+                <span class="trait-tag">Comunicativa</span>
+                <span class="trait-tag">Persistente</span>
+                <span class="trait-tag">Ágil</span>
+                <span class="trait-tag">Simpática</span>
+                <span class="trait-tag">Trabalho em equipe</span>
+                <span class="trait-tag">Foco em metas</span>
+                <span class="trait-tag">Adaptável</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <!-- Objective -->
+        <div class="section animate-in delay-3">
+            <div class="section-header">
+                <div class="section-icon">
+                    <span class="iconify" data-icon="lucide:target"></span>
+                </div>
+                <span class="section-title">Objetivo</span>
+                <div class="section-line"></div>
+            </div>
+            <div class="objective-text">
+                Atuar de forma dinâmica e eficiente como <strong style="color: var(--text-primary); font-weight: 600;">Vendedora</strong> ou <strong style="color: var(--text-primary); font-weight: 600;">Estoquista</strong>, aplicando minha experiência em atendimento ao público, vendas no varejo e excelência em organização e controle de mercadorias.
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section animate-in delay-5">
+            <div class="section-header">
+                <div class="section-icon">
+                    <span class="iconify" data-icon="lucide:briefcase"></span>
+                </div>
+                <span class="section-title">Experiência</span>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Exp 1 -->
+            <div class="exp-card">
+                <div class="exp-top">
+                    <div class="exp-role">Vendedora / Consultora de Beleza</div>
+                </div>
+                <div class="exp-company">
+                    <span class="iconify" data-icon="lucide:building-2"></span>
+                    O Boticário · Trabalho Autônomo
+                </div>
+                <ul class="exp-tasks">
+                    <li>Prospecção de clientes, demonstração de produtos de beleza e perfumaria com foco no fechamento de vendas</li>
+                    <li>Gestão completa do próprio estoque de produtos, controle de pedidos e agendamento de entregas</li>
+                    <li>Administração do fluxo de caixa, garantindo controle financeiro preciso das operações</li>
+                </ul>
+            </div>
+
+            <div class="timeline-connector">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+            </div>
+
+            <!-- Exp 2 -->
+            <div class="exp-card">
+                <div class="exp-top">
+                    <div class="exp-role">Vendedora e Estoquista</div>
+                </div>
+                <div class="exp-company">
+                    <span class="iconify" data-icon="lucide:building-2"></span>
+                    Loja de Moda e Varejo · Hidrolândia – CE
+                </div>
+                <ul class="exp-tasks">
+                    <li>Atendimento direto ao cliente no balcão e no provador, auxiliando na escolha de peças e impulsionando vendas</li>
+                    <li>Organização do estoque físico, reposição de mercadorias no salão e conferência de novas coleções</li>
+                    <li>Manutenção do layout de loja e classificação eficiente de mercadorias</li>
+                </ul>
+            </div>
+
+            <div class="timeline-connector">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+            </div>
+
+            <!-- Exp 3 -->
+            <div class="exp-card">
+                <div class="exp-top">
+                    <div class="exp-role">Profissional de Limpeza</div>
+                </div>
+                <div class="exp-company">
+                    <span class="iconify" data-icon="lucide:building-2"></span>
+                    Trabalho Autônomo · 1 ano
+                </div>
+                <ul class="exp-tasks">
+                    <li>Realização de serviços em residências e ambientes comerciais com foco em organização extrema</li>
+                    <li>Conservação de materiais e manutenção de padrões elevados de limpeza e apresentação</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Print Button -->
+<button class="print-btn" onclick="window.print()">
+    <span class="iconify" data-icon="lucide:printer"></span>
+    Imprimir
+</button>
+
+<script>
+    // Animate skill bars on load
+    document.addEventListener('DOMContentLoaded', () => {
+        const fills = document.querySelectorAll('.skill-fill');
+        fills.forEach(fill => {
+            const target = fill.style.width;
+            fill.style.width = '0%';
+            setTimeout(() => {
+                fill.style.width = target;
+            }, 600);
+        });
+    });
+</script>
+</body>
+</html>
